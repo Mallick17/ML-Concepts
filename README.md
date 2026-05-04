@@ -243,5 +243,40 @@ The biggest practical difference between MAE and MSE is how they treat **outlier
 ##### **MAE**: Model stays closer to the majority of normal data points.
   - **MAE is better** when you have many unusual cases (e.g., predicting prices in a city with both slums and billionaire houses).
 <img width="675" height="316" alt="image" src="https://github.com/user-attachments/assets/1ce3bf8f-2ec8-45c7-8fda-7a773ab296bf" />
- 
+
+### When to Choose Which Loss?
+#### **Choose MSE / RMSE when:**
+- Large errors are **very costly** and you want the model to take them seriously.
+- Outliers are **genuine and important** (not noise).
+- You are using **Gradient Descent** (smoother optimization due to mathematical properties).
+
+<details>
+    <summary>Click to view examples</summary>
+
+- Rocket trajectory prediction — Used in SpaceX and ISRO AI systems. A big error can cause mission failure, so MSE is preferred to heavily penalize large deviations.
+- Stock price prediction — Used by trading platforms and Grok/xAI financial analysis tools. Big misses can lead to huge financial losses, hence MSE is commonly used.
+- Weather forecasting (temperature) — Used by IMD, Google Weather, and Alibaba Cloud AI. Large errors can affect millions of people, so MSE helps penalize big mistakes strongly.
+- Credit risk scoring — Used by banks and fintech companies (like Paytm, PhonePe). Banks want to heavily penalize big mispredictions of default risk.
+    
+</details>
+
+#### **Choose MAE when:**
+- Your dataset has **many outliers** or noisy data that you don’t want to dominate the model.
+- You want the loss to be **easily interpretable** (“On average, we are wrong by ₹1.8 lakhs”).
+- Robustness is more important than precision.
+
+<details>
+    <summary>Click to view examples</summary>
+
+- House price prediction in India — Cities have both cheap houses and ultra-luxury villas (outliers). Many real estate AI tools prefer MAE so the model is not skewed by expensive properties.
+- Salary prediction — Few people have extremely high salaries (CEOs, actors, cricketers). MAE keeps predictions stable for normal employees.
+- Traffic time prediction — Occasional accidents create outliers. Used by many AI assistants including Perplexity and Grok.
+- Medicine price prediction — Some rare drugs are extremely expensive. MAE prevents distortion from these outliers.
+    
+</details>
+
+#### Use RMSE for final reporting because:
+- It gives error in the same unit as the label (e.g., ±2.3 MPG, ±₹45,000, ±3.2°C).
+- Very popular in Kaggle competitions and business dashboards.
+
 ---
