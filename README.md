@@ -212,11 +212,12 @@ Loss measures the **distance** between the model's **predicted value** and the *
 **Model** :  
 <img width="722" height="661" alt="image" src="https://github.com/user-attachments/assets/d63ad6b0-338c-4c65-a1a0-16bb7364d7d2" />
 
----
-
 ### Visualizing Loss
 
 Loss can be visualized as vertical arrows from actual data points to the model's prediction line.
 
-![Loss Visualization](images/loss_arrows.png)
+<img width="663" height="297" alt="image" src="https://github.com/user-attachments/assets/87045b11-a5bc-4397-8618-8801c62a346e" />
 
+> The red arrows show the **loss** — shorter arrows mean better predictions.
+
+---
