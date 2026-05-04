@@ -378,6 +378,13 @@ Because the loss surface for a linear model is always convex, gradient descent h
 
 #### The 3D Loss Surface
 
+For a model with one feature, the loss surface is 3-dimensional:
+- **X-axis**: Weight
+- **Y-axis**: Bias
+- **Z-axis**: Loss
+
+The shape is a smooth bowl (paraboloid), and gradient descent traces a path of points that spiral down toward the lowest point — just like a ball rolling down a hill.
+
 <details>
     <summary>Click to view the 3D Graph</summary>
 
@@ -389,23 +396,19 @@ Because the loss surface for a linear model is always convex, gradient descent h
 
 > Loss surface showing the weight and bias values that produce the lowest loss.
 
-</details>
-
-For a model with one feature, the loss surface is 3-dimensional:
-- **X-axis**: Weight
-- **Y-axis**: Bias
-- **Z-axis**: Loss
-
 <img width="752" height="480" alt="image" src="https://github.com/user-attachments/assets/a3ab32ee-15a6-40b3-b218-0e86d1641d37" />
 
-The shape is a smooth bowl (paraboloid), and gradient descent traces a path of points that spiral down toward the lowest point — just like a ball rolling down a hill.
+> Loss graph showing gradient descent points stopping at the lowest point on the graph.
+
+</details>
 
 > **Real Example (MPG dataset):**  
 > The lowest point on the loss surface occurs at:
 > - Weight = **−5.44** (each 1,000 lb increase in car weight reduces MPG by 5.44)
 > - Bias = **35.94**
 > - Minimum Loss = **5.54**
->
+<img width="538" height="280" alt="image" src="https://github.com/user-attachments/assets/2523cbe7-eaf1-489b-99a2-610055c21a38" />
+
 > No other weight and bias values produce a model with lower loss on this data.
 
 #### Convex vs. Non-Convex
