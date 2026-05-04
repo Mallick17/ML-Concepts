@@ -323,6 +323,8 @@ When training a model, the most common way to monitor this is through a **loss c
 
 #### Three Phases of a Loss Curve
 
+<img width="1604" height="874" alt="image" src="https://github.com/user-attachments/assets/9ad1705e-ac19-43c1-8096-2b1658b243c1" />
+
 | Phase | What's Happening |
 |-------|-----------------|
 | **Steep decline (early iterations)** | Weights are far from optimal; every step dramatically improves the model |
@@ -332,8 +334,6 @@ When training a model, the most common way to monitor this is through a **loss c
 A model trained on the MPG dataset typically converges around the **1,000th iteration** — loss drops sharply at first, then gradually levels off.
 
 #### Snapshots During Training
-
-<img width="1604" height="874" alt="image" src="https://github.com/user-attachments/assets/1c97e439-be94-4c8a-8a21-d0e7be4e2dbe" />
 
 | Iteration | Model State | Loss |
 |-----------|-------------|------|
