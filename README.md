@@ -46,9 +46,6 @@ Where:
 ### Linear Regression in Machine Learning Terms
 
 Google's formulation:
-```
-y' = b + w_1x_1
-```
 
 <img width="142" height="44" alt="image" src="https://github.com/user-attachments/assets/03440172-efda-4768-a3eb-7d759617e5a7" />
 
@@ -59,6 +56,8 @@ Where:
 - **b** = **bias** (same as y-intercept; also sometimes called $w_0$)
 - **w₁** = **weight** of the feature (same as slope $m$)
 - **x₁** = feature (input)
+
+<img width="684" height="312" alt="image" src="https://github.com/user-attachments/assets/6f1b8a9f-8d44-489c-b9bb-dbb79a795497" />
 
 **Bias (b)**: Tells where the line crosses the y-axis. It shifts the entire line up or down.  
 **Weight (w)**: Controls the steepness and direction of the line. Positive weight = upward slope, negative = downward slope.
