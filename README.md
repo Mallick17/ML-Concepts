@@ -150,3 +150,48 @@ The model learns a separate **weight** for each feature.
 ---
 
 ## Loss Function in Linear Regression
+
+**Loss** is a numerical metric that tells **how wrong** a model's predictions are.  
+
+The main goal during training is to **minimize the loss** — i.e., make the model's predictions as close as possible to the actual labels.
+
+### What is Loss?
+
+Loss measures the **distance** between the model's **predicted value** and the **actual label**.
+> In machine learning, **Loss = Distance between Predicted Value and Actual Value**.
+
+- It focuses on **distance**, not direction.
+- If the model predicts **2** but actual value is **5**, the difference is **3** (we ignore the negative sign).
+    - If model predicts **₹8 lakhs** but actual house price is **₹10 lakhs**, loss = 2 lakhs (we ignore negative).
+
+**Two common ways to remove the sign**:
+1. Take the **absolute value** → L1 Loss
+2. **Square** the difference → L2 Loss
+
+<details>
+    <summary>Click to view Real-Life Scenarios to Understand Loss</summary>
+
+### Real-Life Scenarios to Understand Loss
+
+1. **House Price Prediction** (Most Common Example)
+   - Feature: House size (sq ft)
+   - Label: Actual selling price
+   - Model predicts ₹45 lakhs for a house, but it actually sold for ₹52 lakhs.
+   - **Loss** tells the agent how wrong the prediction was.
+
+2. **Fuel Efficiency Prediction** (Google Course Example)
+   - Feature: Car weight
+   - Label: Actual Miles Per Gallon (MPG)
+   - Model predicts 23.1 MPG, actual = 24 MPG → Small loss.
+
+3. **Exam Score Prediction**
+   - Features: Hours studied, attendance, sleep hours
+   - Label: Actual marks (out of 100)
+   - Model predicts 78, student scored 65 → High loss for this student.
+
+4. **Weather Forecasting**
+   - Feature: Humidity, wind speed, pressure
+   - Label: Actual temperature
+   - Model predicts 32°C, actual = 29°C → Loss of 3 degrees.
+    
+</details>
