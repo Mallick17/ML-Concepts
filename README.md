@@ -109,6 +109,9 @@ The model learns a separate **weight** for each feature.
 | **Training**      | Process of finding optimal bias & weights                               | Learning from past recipes       |
 | **Prediction**    | Using the learned equation on new data                                  | Cooking a new dish               |
 
+<details>
+    <summary>Click to view Simple Real-Life Analogies</summary>
+
 ### Simple Real-Life Analogies
 
 1. **House Price Prediction**:
@@ -138,9 +141,12 @@ The model learns a separate **weight** for each feature.
 - Sensitive to outliers
 - Can struggle with very complex real-world patterns (that's where advanced models come in)
 
+</details>
+
 #### Questions:
 - What parts of the linear regression equation are updated during training?
      - The bias and weights
 
 ---
 
+## Loss Function in Linear Regression
