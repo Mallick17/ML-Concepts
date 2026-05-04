@@ -77,9 +77,7 @@ Prediction for a 4000-pound car:
 
 Real-world problems usually have many features. The equation becomes:
 
-```
-y' = b + w_1x_1 + w_2x_2 + w_3x_3 + \dots + w_nx_n
-```
+<img width="395" height="42" alt="image" src="https://github.com/user-attachments/assets/ba39b683-0235-4637-856b-342d7faa8a7b" />
 
 **Example** — Predicting MPG using multiple features:
 - Weight
