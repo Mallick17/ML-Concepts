@@ -280,3 +280,70 @@ The biggest practical difference between MAE and MSE is how they treat **outlier
 - Very popular in Kaggle competitions and business dashboards.
 
 ---
+
+## Gradient Descent in Linear Regression
+**Gradient Descent** is a mathematical optimization algorithm used during **training** to iteratively find the **best weights and bias** that minimize the loss function.
+
+Instead of trying every possible combination of weights and biases (which would take forever), gradient descent is smart — it starts somewhere, checks which direction reduces the error, takes a small step in that direction, and repeats until it can no longer improve.
+
+### Core Idea
+
+The model doesn't know the best weights upfront. It starts with random values near zero and **gradually adjusts them** by always asking: *"If I tweak this weight slightly, does the loss go up or down?"* — then moves in the direction that reduces it.
+
+> Think of it like being blindfolded on a hilly landscape, trying to reach the lowest valley. You can't see the whole map, but you can feel the slope under your feet. At every step, you move in the direction that feels most downhill. Eventually, you reach the bottom.
+
+### How Gradient Descent Works
+
+Gradient descent repeats the following four steps for a number of user-defined iterations:
+
+1. **Calculate the loss** — use the current weight and bias to make predictions, then measure how wrong they are using the loss function.
+2. **Find the gradient** — compute the direction (and steepness) in which adjusting the weight or bias would reduce loss the most.
+3. **Update the parameters** — move the weight and bias a small amount in that direction. The size of this step is controlled by the **learning rate**.
+4. **Repeat** — go back to step 1. Continue until further iterations no longer reduce the loss — the model has **converged**.
+
+<img width="508" height="376" alt="image" src="https://github.com/user-attachments/assets/fa51b880-6a49-4618-8033-6fab2d5fd6f8" />
+
+> **Note:** The model begins with randomized weights and biases near zero, not at the correct values. Training is the process of discovering those correct values.
+
+### The Learning Rate
+
+The **learning rate** controls how large each step is during gradient descent. It is one of the most important hyperparameters to tune.
+
+| Learning Rate | Effect |
+|---------------|--------|
+| **Too large** | Overshoots the minimum — loss bounces around and may never converge |
+| **Too small** | Takes tiny steps — training is correct but extremely slow |
+| **Just right** | Loss decreases steadily and converges at a good pace |
+
+### Model Convergence and Loss Curves
+
+**Convergence** means the model has found the weights and bias that produce the **lowest achievable loss** — further training iterations no longer meaningfully improve the result.
+
+When training a model, the most common way to monitor this is through a **loss curve** — a graph that plots loss (y-axis) against the number of iterations (x-axis):
+
+#### Three Phases of a Loss Curve
+
+| Phase | What's Happening |
+|-------|-----------------|
+| **Steep decline (early iterations)** | Weights are far from optimal; every step dramatically improves the model |
+| **Gradual reduction (middle)** | Weights are getting closer; improvements are smaller per step |
+| **Flattening (convergence)** | Weights have stabilized near the optimal values; further updates change almost nothing |
+
+A model trained on the MPG dataset typically converges around the **1,000th iteration** — loss drops sharply at first, then gradually levels off.
+
+#### Snapshots During Training
+
+<img width="1604" height="874" alt="image" src="https://github.com/user-attachments/assets/1c97e439-be94-4c8a-8a21-d0e7be4e2dbe" />
+
+| Iteration | Model State | Loss |
+|-----------|-------------|------|
+| ~2nd | Line tilts away from data — poor predictions <img width="436" height="185" alt="image" src="https://github.com/user-attachments/assets/fe277227-4e11-427a-ad19-b6666cd8a31a" />
+| Very high |
+| ~400th | Line cuts through data but not at optimal angle <img width="429" height="193" alt="image" src="https://github.com/user-attachments/assets/7b14317f-7336-43b8-84a1-082d59fd9e98" />
+ | Moderate |
+| ~1000th | Line fits the data well — model has converged <img width="433" height="196" alt="image" src="https://github.com/user-attachments/assets/592a1550-7dfb-4fb5-b313-1414baf46de6" /> 
+| Lowest achievable |
+
+> **Note:** A loss of exactly 0 is not the goal. It would mean the model perfectly fits every training point — usually a sign of **overfitting**, meaning the model memorized the training data but won't generalize to new data.
+
+---
