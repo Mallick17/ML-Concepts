@@ -138,7 +138,9 @@ The model learns a separate **weight** for each feature.
 - Sensitive to outliers
 - Can struggle with very complex real-world patterns (that's where advanced models come in)
 
+#### Questions:
+- What parts of the linear regression equation are updated during training?
+     - The bias and weights
+
 ---
 
-**Tip for Understanding**:  
-Plot your data whenever possible. A good linear regression model should have its line passing close to most data points. The weights tell you the "influence" of each feature — very useful for interpretation!
