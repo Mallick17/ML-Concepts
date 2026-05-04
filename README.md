@@ -309,11 +309,13 @@ Gradient descent repeats the following four steps for a number of user-defined i
 
 The **learning rate** controls how large each step is during gradient descent. It is one of the most important hyperparameters to tune.
 
-| Learning Rate | Effect |
-|---------------|--------|
-| **Too large** | Overshoots the minimum — loss bounces around and may never converge |
-| **Too small** | Takes tiny steps — training is correct but extremely slow |
-| **Just right** | Loss decreases steadily and converges at a good pace |
+| Learning Rate | Effect | Observation |
+|---------------|--------|---------------|
+| **Ideal Learning Rate** | The ideal learning rate helps the model to converge within a reasonable number of iterations. <img width="537" height="420" alt="image" src="https://github.com/user-attachments/assets/5122f1f0-56a8-46d8-9de7-7f9e7da40a5b" /> | the loss curve shows the model significantly improving during the first 20 iterations before beginning to converge. |
+| **Too large** | Overshoots the minimum — loss bounces around and may never converge <img width="531" height="413" alt="image" src="https://github.com/user-attachments/assets/ca9b896a-fced-4f51-a50d-da7b0b97117d" /> | A learning rate that's too large never converges because each iteration either causes the loss to bounce around or continually increase. The loss curve shows the model decreasing and then increasing loss after each iteration. |
+| **Too small** | Takes tiny steps — training is correct but extremely slow <img width="539" height="407" alt="image" src="https://github.com/user-attachments/assets/7fdbb175-2c87-4d78-b271-04019f137d06" /> | In contrast, a learning rate that's too small can take too many iterations to converge. In Figure 21, the loss curve shows the model making only minor improvements after each iteration |
+| **Too Big** | where the loss curve fluctuates wildly, going up and down as the iterations increase. <img width="538" height="421" alt="image" src="https://github.com/user-attachments/assets/b1bc0f91-7658-4439-af8e-bfa56191cd32" /> | Loss graph showing a model trained with a learning rate that's too big, where the loss curve drastically increases in later iterations. |
+
 
 ### Model Convergence and Loss Curves
 
