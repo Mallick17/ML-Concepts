@@ -235,12 +235,12 @@ The biggest practical difference between MAE and MSE is how they treat **outlier
 | Interpretability          | Less intuitive                                | More human-readable (average error)           |
 
 #### Visual Comparison
-- **MSE**: Model gets pulled closer to outliers.
+##### **MSE**: Model gets pulled closer to outliers.
   - **MSE is better** when big mistakes are very costly (e.g., predicting rocket trajectory, medical dosage, stock trading).
 <img width="674" height="309" alt="image" src="https://github.com/user-attachments/assets/fe46cf64-564d-4c8e-868f-39ae0a740c52" />
  
 
-- **MAE**: Model stays closer to the majority of normal data points.
+##### **MAE**: Model stays closer to the majority of normal data points.
   - **MAE is better** when you have many unusual cases (e.g., predicting prices in a city with both slums and billionaire houses).
 <img width="675" height="316" alt="image" src="https://github.com/user-attachments/assets/1ce3bf8f-2ec8-45c7-8fda-7a773ab296bf" />
  
