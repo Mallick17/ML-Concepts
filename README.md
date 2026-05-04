@@ -280,3 +280,218 @@ The biggest practical difference between MAE and MSE is how they treat **outlier
 - Very popular in Kaggle competitions and business dashboards.
 
 ---
+
+## Gradient Descent in Linear Regression
+**Gradient Descent** is a mathematical optimization algorithm used during **training** to iteratively find the **best weights and bias** that minimize the loss function.
+
+Instead of trying every possible combination of weights and biases (which would take forever), gradient descent is smart — it starts somewhere, checks which direction reduces the error, takes a small step in that direction, and repeats until it can no longer improve.
+
+### Core Idea
+
+The model doesn't know the best weights upfront. It starts with random values near zero and **gradually adjusts them** by always asking: *"If I tweak this weight slightly, does the loss go up or down?"* — then moves in the direction that reduces it.
+
+> Think of it like being blindfolded on a hilly landscape, trying to reach the lowest valley. You can't see the whole map, but you can feel the slope under your feet. At every step, you move in the direction that feels most downhill. Eventually, you reach the bottom.
+
+### How Gradient Descent Works
+
+Gradient descent repeats the following four steps for a number of user-defined iterations:
+
+1. **Calculate the loss** — use the current weight and bias to make predictions, then measure how wrong they are using the loss function.
+2. **Find the gradient** — compute the direction (and steepness) in which adjusting the weight or bias would reduce loss the most.
+3. **Update the parameters** — move the weight and bias a small amount in that direction. The size of this step is controlled by the **learning rate**.
+4. **Repeat** — go back to step 1. Continue until further iterations no longer reduce the loss — the model has **converged**.
+
+<img width="508" height="376" alt="image" src="https://github.com/user-attachments/assets/fa51b880-6a49-4618-8033-6fab2d5fd6f8" />
+
+> **Note:** The model begins with randomized weights and biases near zero, not at the correct values. Training is the process of discovering those correct values.
+
+### The Learning Rate
+
+The **learning rate** controls how large each step is during gradient descent. It is one of the most important hyperparameters to tune.
+
+| Learning Rate | Effect |
+|---------------|--------|
+| **Too large** | Overshoots the minimum — loss bounces around and may never converge |
+| **Too small** | Takes tiny steps — training is correct but extremely slow |
+| **Just right** | Loss decreases steadily and converges at a good pace |
+
+### Model Convergence and Loss Curves
+
+**Convergence** means the model has found the weights and bias that produce the **lowest achievable loss** — further training iterations no longer meaningfully improve the result.
+
+When training a model, the most common way to monitor this is through a **loss curve** — a graph that plots loss (y-axis) against the number of iterations (x-axis):
+
+#### Three Phases of a Loss Curve
+
+<img width="1604" height="874" alt="image" src="https://github.com/user-attachments/assets/9ad1705e-ac19-43c1-8096-2b1658b243c1" />
+
+| Phase | What's Happening |
+|-------|-----------------|
+| **Steep decline (early iterations)** | Weights are far from optimal; every step dramatically improves the model |
+| **Gradual reduction (middle)** | Weights are getting closer; improvements are smaller per step |
+| **Flattening (convergence)** | Weights have stabilized near the optimal values; further updates change almost nothing |
+
+A model trained on the MPG dataset typically converges around the **1,000th iteration** — loss drops sharply at first, then gradually levels off.
+
+#### Snapshots During Training
+
+| Iteration | Model State | Loss |
+|-----------|-------------|------|
+| ~2nd | Line tilts away from data — poor predictions <img width="436" height="185" alt="image" src="https://github.com/user-attachments/assets/fe277227-4e11-427a-ad19-b6666cd8a31a" /> | Very high |
+| ~400th | Line cuts through data but not at optimal angle <img width="429" height="193" alt="image" src="https://github.com/user-attachments/assets/7b14317f-7336-43b8-84a1-082d59fd9e98" /> | Moderate |
+| ~1000th | Line fits the data well — model has converged <img width="433" height="196" alt="image" src="https://github.com/user-attachments/assets/592a1550-7dfb-4fb5-b313-1414baf46de6" /> | Lowest achievable |
+
+> **Note:** A loss of exactly 0 is not the goal. It would mean the model perfectly fits every training point — usually a sign of **overfitting**, meaning the model memorized the training data but won't generalize to new data.
+
+---
+
+## Convergence and Convex Functions
+
+This is the most important theoretical guarantee behind linear regression training. It explains *why* gradient descent is reliable and *what it means* when the model is done training.
+
+#### What is a Convex Function?
+
+A **convex function** produces a loss surface shaped like a **bowl** — it curves upward in all directions from a single lowest point.
+
+```
+Loss
+  |  *               *
+  |   **           **
+  |     ***     ***
+  |        *****
+  |          ↑
+  |    global minimum
+  |__________________________ Weight
+```
+
+Key property: **there are no local dips, no flat valleys, no traps** — just one unique bottom point called the **global minimum**.
+
+#### Why Convexity Guarantees Success
+
+Because the loss surface for a linear model is always convex, gradient descent has a mathematical guarantee:
+
+- **Any starting point works.** No matter where random initialization places the weights, there is only one valley to fall into.
+- **Downhill always means toward the best solution.** Every step that reduces loss moves the weights closer to the globally optimal values — there is no "false downhill" that leads to a dead end.
+- **When the algorithm stops, it has found the best model.** When the gradient reaches near zero (no more downhill), the model is at the global minimum — no other weight and bias combination produces a lower loss on this dataset.
+
+> Imagine placing a ball anywhere on the inside surface of a bowl. No matter where you release it, if it always rolls downhill, it will eventually settle at the bottom of the bowl. That is exactly what gradient descent does on a convex loss surface.
+
+#### The 3D Loss Surface
+
+For a model with one feature, the loss surface is 3-dimensional:
+- **X-axis**: Weight
+- **Y-axis**: Bias
+- **Z-axis**: Loss
+
+The shape is a smooth bowl (paraboloid), and gradient descent traces a path of points that spiral down toward the lowest point — just like a ball rolling down a hill.
+
+<details>
+    <summary>Click to view the 3D Graph</summary>
+
+<img width="502" height="419" alt="image" src="https://github.com/user-attachments/assets/2c2fda4f-2c12-4aea-8811-7ea05f8b8db9" />
+
+> Loss surface that shows its convex shape.
+
+<img width="556" height="508" alt="image" src="https://github.com/user-attachments/assets/2281b69f-b2c0-4784-845e-530ad8d5d2d6" />
+
+> Loss surface showing the weight and bias values that produce the lowest loss.
+
+<img width="752" height="480" alt="image" src="https://github.com/user-attachments/assets/a3ab32ee-15a6-40b3-b218-0e86d1641d37" />
+
+> Loss graph showing gradient descent points stopping at the lowest point on the graph.
+
+</details>
+
+> **Real Example (MPG dataset):**  
+> The lowest point on the loss surface occurs at:
+> - Weight = **−5.44** (each 1,000 lb increase in car weight reduces MPG by 5.44)
+> - Bias = **35.94**
+> - Minimum Loss = **5.54**
+<img width="538" height="280" alt="image" src="https://github.com/user-attachments/assets/2523cbe7-eaf1-489b-99a2-610055c21a38" />
+
+> No other weight and bias values produce a model with lower loss on this data.
+
+#### Convex vs. Non-Convex
+
+| Property | Convex (Linear Models) | Non-Convex (Neural Networks) |
+|----------|------------------------|------------------------------|
+| Shape of loss surface | Smooth bowl | Hilly landscape with multiple valleys |
+| Number of minimums | One (global minimum) | Many (local minimums + global minimum) |
+| Gradient descent guarantee | **Always finds the best solution** | May get stuck in a local minimum |
+| Training complexity | Straightforward | Requires careful tuning (learning rate schedules, initialization tricks, etc.) |
+| Example models | Linear regression, logistic regression | Deep neural networks, CNNs, transformers |
+
+> This is why deep learning models are significantly harder to train than linear models — their non-convex loss surfaces mean gradient descent might settle in a *good enough* valley rather than the *best* one.
+
+<details>
+    <summary>Click to view Real-Life Analogies for Gradient Descent</summary>
+
+### Real-Life Analogies
+
+1. **Blindfolded Hiker**
+   - You are blindfolded on a hilly terrain and want to reach the lowest valley.
+   - At every step, you feel the slope and move in the direction that goes downhill.
+   - Gradient descent does exactly this — it feels the "slope" of the loss surface (gradient) and steps downhill.
+   - On a convex surface (a bowl), this always leads to the single lowest point.
+
+2. **Adjusting a Recipe**
+   - You bake a cake and it tastes too salty (high loss).
+   - You reduce salt a little, taste again — better (lower loss).
+   - Keep adjusting until the taste is perfect (converged).
+   - Gradient descent is the tasting and adjusting process; the weights are the amounts of each ingredient.
+
+3. **Tuning a Radio**
+   - You're tuning a radio knob to find the clearest signal.
+   - You turn it a little, hear static (high loss), turn it back slightly, signal improves (lower loss).
+   - You converge on the exact frequency (global minimum) where signal is best.
+   - Learning rate = how big each turn is.
+
+4. **Learning to Throw a Ball**
+   - A child learns to throw a ball at a target.
+   - Each throw tells them how far off they were (loss).
+   - They adjust their angle and force slightly each time.
+   - After enough throws, they converge on the technique that hits closest most often.
+
+</details>
+
+<details>
+    <summary>Click to view Why Linear Regression's Convexity is Special</summary>
+
+### Why Linear Models Always Produce Convex Loss Surfaces
+
+The loss functions used in linear regression — MSE, MAE, RMSE — all produce convex surfaces when applied to a linear model. Here's the intuition:
+
+- A **linear model** is of the form: `y' = w₁x₁ + b`
+- The **MSE loss** averages the squared differences between predictions and labels.
+- Squaring a linear expression and averaging over examples always produces a **quadratic function**.
+- Quadratic functions (parabolas in 2D, paraboloids in 3D) are always convex — they curve upward from a single bottom point.
+
+This is a mathematical property, not a coincidence. The moment you move to non-linear models (e.g., neural networks), the composition of many non-linear functions creates surfaces that are no longer convex.
+
+**Practical implication:** You never need to worry about gradient descent getting "stuck" when training a linear regression model — convergence to the best possible solution is mathematically guaranteed.
+
+</details>
+
+### Important Terms
+
+| Term | Meaning | Analogy |
+|------|---------|---------|
+| **Gradient** | The slope of the loss surface at the current weight/bias position; tells us which direction loss increases fastest | The slope under your feet on a hill |
+| **Learning Rate** | How large a step gradient descent takes each iteration | Step size while walking downhill |
+| **Iteration** | One full pass through the 4-step update cycle | One step taken while hiking |
+| **Convergence** | The state where further iterations no longer reduce loss | Reaching the valley floor |
+| **Global Minimum** | The single lowest point on a convex loss surface — the best weights and bias | The deepest point in a bowl |
+| **Local Minimum** | A valley that is not the overall lowest point; only exists in non-convex surfaces | A dip on the side of a hill, not the valley |
+| **Convex Function** | A function with a bowl shape — one unique lowest point, no traps | A perfect bowl |
+| **Loss Surface** | The 3D landscape of loss values across all possible weights and biases | The terrain a hiker is walking on |
+| **Overfitting** | When a model fits training data perfectly (loss ≈ 0) but fails on new data | Memorizing answers without understanding the subject |
+
+#### Questions:
+- What is the role of gradient descent in linear regression?
+     - Gradient descent is an iterative process that finds the best weights and bias that minimize the loss.
+- Why doesn't linear regression get stuck in a local minimum during training?
+     - Because the loss surface for a linear model is always convex — it has only one lowest point (the global minimum), so gradient descent always converges on the best possible solution.
+- What does it mean when a model has "converged"?
+     - The model has found the weights and bias that produce the lowest achievable loss — further training iterations no longer meaningfully reduce it.
+
+---
