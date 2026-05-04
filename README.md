@@ -337,12 +337,9 @@ A model trained on the MPG dataset typically converges around the **1,000th iter
 
 | Iteration | Model State | Loss |
 |-----------|-------------|------|
-| ~2nd | Line tilts away from data — poor predictions <img width="436" height="185" alt="image" src="https://github.com/user-attachments/assets/fe277227-4e11-427a-ad19-b6666cd8a31a" />
-| Very high |
-| ~400th | Line cuts through data but not at optimal angle <img width="429" height="193" alt="image" src="https://github.com/user-attachments/assets/7b14317f-7336-43b8-84a1-082d59fd9e98" />
- | Moderate |
-| ~1000th | Line fits the data well — model has converged <img width="433" height="196" alt="image" src="https://github.com/user-attachments/assets/592a1550-7dfb-4fb5-b313-1414baf46de6" /> 
-| Lowest achievable |
+| ~2nd | Line tilts away from data — poor predictions <img width="436" height="185" alt="image" src="https://github.com/user-attachments/assets/fe277227-4e11-427a-ad19-b6666cd8a31a" /> | Very high |
+| ~400th | Line cuts through data but not at optimal angle <img width="429" height="193" alt="image" src="https://github.com/user-attachments/assets/7b14317f-7336-43b8-84a1-082d59fd9e98" /> | Moderate |
+| ~1000th | Line fits the data well — model has converged <img width="433" height="196" alt="image" src="https://github.com/user-attachments/assets/592a1550-7dfb-4fb5-b313-1414baf46de6" /> | Lowest achievable |
 
 > **Note:** A loss of exactly 0 is not the goal. It would mean the model perfectly fits every training point — usually a sign of **overfitting**, meaning the model memorized the training data but won't generalize to new data.
 
