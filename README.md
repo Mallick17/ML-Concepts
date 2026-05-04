@@ -33,9 +33,9 @@ A straight line drawn through these points that best represents the overall rela
 ### Linear Regression Equation (Algebra)
 
 In basic mathematics:
-$$
+```
 y = mx + b
-$$
+```
 
 Where:
 - **y** = predicted value (label)
@@ -46,9 +46,9 @@ Where:
 ### Linear Regression in Machine Learning Terms
 
 Google's formulation:
-$$
+```
 y' = b + w_1x_1
-$$
+```
 
 (For single feature)
 
@@ -74,9 +74,9 @@ Prediction for a 4000-pound car:
 
 Real-world problems usually have many features. The equation becomes:
 
-$$
+```
 y' = b + w_1x_1 + w_2x_2 + w_3x_3 + \dots + w_nx_n
-$$
+```
 
 **Example** — Predicting MPG using multiple features:
 - Weight
