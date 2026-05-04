@@ -63,6 +63,8 @@ Where:
 **Weight (w)**: Controls the steepness and direction of the line. Positive weight = upward slope, negative = downward slope.
 
 > During **training**, the model automatically learns the best values of **bias** and **weights** from the data to minimize errors.
+<img width="669" height="269" alt="image" src="https://github.com/user-attachments/assets/5409c30c-35c0-4eda-a660-592c71895833" />
+
 
 **Example Calculation** (from the course):  
 Bias ≈ 34, Weight ≈ -4.6  
