@@ -396,6 +396,8 @@ For a model with one feature, the loss surface is 3-dimensional:
 - **Y-axis**: Bias
 - **Z-axis**: Loss
 
+<img width="752" height="480" alt="image" src="https://github.com/user-attachments/assets/a3ab32ee-15a6-40b3-b218-0e86d1641d37" />
+
 The shape is a smooth bowl (paraboloid), and gradient descent traces a path of points that spiral down toward the lowest point — just like a ball rolling down a hill.
 
 > **Real Example (MPG dataset):**  
