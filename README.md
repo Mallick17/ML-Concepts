@@ -195,3 +195,28 @@ Loss measures the **distance** between the model's **predicted value** and the *
    - Model predicts 32°C, actual = 29°C → Loss of 3 degrees.
     
 </details>
+
+### Types of Loss Functions
+- In linear regression, there are five main types of loss, which are outlined in the following table.
+
+<img width="732" height="432" alt="image" src="https://github.com/user-attachments/assets/f4c91fef-751f-46d2-9d3d-8e9835e970e7" />
+
+> The functional difference between L1 loss and L2 loss (or between MAE/RMSE and MSE) is squaring. When the difference between the prediction and label is large, squaring makes the loss even larger. When the difference is small (less than 1), squaring makes the loss even smaller.
+> Loss metrics like MAE and RMSE may be preferable to L2 loss or MSE in some use cases because they tend to be more human-interpretable, as they measure error using the same scale as the model's predicted value.
+
+- **Note:** _MAE and RMSE can differ quite widely. MAE represents the average prediction error, whereas RMSE represents the "spread" of the errors, and is more skewed by larger errors._
+- _When processing multiple examples at once, we recommend averaging the losses across all the examples, whether using MAE, MSE, or RMSE._
+
+### Loss Calculation Example
+
+**Model** :  
+<img width="722" height="661" alt="image" src="https://github.com/user-attachments/assets/d63ad6b0-338c-4c65-a1a0-16bb7364d7d2" />
+
+---
+
+### Visualizing Loss
+
+Loss can be visualized as vertical arrows from actual data points to the model's prediction line.
+
+![Loss Visualization](images/loss_arrows.png)
+
