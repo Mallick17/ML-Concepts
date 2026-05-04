@@ -202,6 +202,7 @@ Loss measures the **distance** between the model's **predicted value** and the *
 <img width="732" height="432" alt="image" src="https://github.com/user-attachments/assets/f4c91fef-751f-46d2-9d3d-8e9835e970e7" />
 
 > The functional difference between L1 loss and L2 loss (or between MAE/RMSE and MSE) is squaring. When the difference between the prediction and label is large, squaring makes the loss even larger. When the difference is small (less than 1), squaring makes the loss even smaller.
+
 > Loss metrics like MAE and RMSE may be preferable to L2 loss or MSE in some use cases because they tend to be more human-interpretable, as they measure error using the same scale as the model's predicted value.
 
 - **Note:** _MAE and RMSE can differ quite widely. MAE represents the average prediction error, whereas RMSE represents the "spread" of the errors, and is more skewed by larger errors._
@@ -220,4 +221,27 @@ Loss can be visualized as vertical arrows from actual data points to the model's
 
 > The red arrows show the **loss** — shorter arrows mean better predictions.
 
+> *Shorter arrows = lower loss = better model*
+
+### MAE vs MSE — How They Handle Outliers
+
+The biggest practical difference between MAE and MSE is how they treat **outliers**.
+
+| Aspect                    | MSE (L2)                                      | MAE (L1)                                      |
+|---------------------------|-----------------------------------------------|-----------------------------------------------|
+| Penalty on large errors   | Very high (because of squaring)               | Moderate (linear penalty)                     |
+| Effect on model           | Pulls the line more toward outliers           | Less affected by outliers                     |
+| Best when                 | Outliers are important / valid                | Dataset has many outliers                     |
+| Interpretability          | Less intuitive                                | More human-readable (average error)           |
+
+#### Visual Comparison
+- **MSE**: Model gets pulled closer to outliers.
+  - **MSE is better** when big mistakes are very costly (e.g., predicting rocket trajectory, medical dosage, stock trading).
+<img width="674" height="309" alt="image" src="https://github.com/user-attachments/assets/fe46cf64-564d-4c8e-868f-39ae0a740c52" />
+ 
+
+- **MAE**: Model stays closer to the majority of normal data points.
+  - **MAE is better** when you have many unusual cases (e.g., predicting prices in a city with both slums and billionaire houses).
+<img width="675" height="316" alt="image" src="https://github.com/user-attachments/assets/1ce3bf8f-2ec8-45c7-8fda-7a773ab296bf" />
+ 
 ---
