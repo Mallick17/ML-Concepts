@@ -50,6 +50,8 @@ Google's formulation:
 y' = b + w_1x_1
 ```
 
+<img width="142" height="44" alt="image" src="https://github.com/user-attachments/assets/03440172-efda-4768-a3eb-7d759617e5a7" />
+
 (For single feature)
 
 Where:
