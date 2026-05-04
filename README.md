@@ -92,7 +92,11 @@ The model learns a separate **weight** for each feature.
 
 **Key Observations** (from course):
 - Bigger engine displacement → generally lower MPG (negative weight)
+<img width="1352" height="802" alt="image" src="https://github.com/user-attachments/assets/e1b676a7-43fe-4876-bd01-95b7c70c3560" />
+
 - Slower acceleration (higher 0-60 time) → can show positive relationship in some cases
+<img width="1374" height="798" alt="image" src="https://github.com/user-attachments/assets/1d095457-6c48-4cf1-a681-33746ca7e3c7" />
+
 
 ### Important Terms
 
