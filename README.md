@@ -88,6 +88,9 @@ Real-world problems usually have many features. The equation becomes:
 
 The model learns a separate **weight** for each feature.
 
+<img width="672" height="253" alt="image" src="https://github.com/user-attachments/assets/50cabf35-e866-41da-b2b8-54df8ac7a4e5" />
+
+
 **Key Observations** (from course):
 - Bigger engine displacement → generally lower MPG (negative weight)
 - Slower acceleration (higher 0-60 time) → can show positive relationship in some cases
